@@ -1,18 +1,7 @@
-Scotch-Todo
+SpotbaseDroid
 =====================
 
-An Ionic Todo App for Scotch readers. To use this demo, make sure you have read the article carefully and follow the steps:
-
-
-### Clone the repository and cd the the app's folder:
- ````
- git clone https://github.com/christiannwamba/scotch-todo
- ````
- 
- ````
- cd scotch-todo
- ````
- 
+An Ionic App for fetching spots from Spotbase application. 
 
 ###Install dependencies as specified by `package.json` and `bower.json`
 
