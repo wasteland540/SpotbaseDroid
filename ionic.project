@@ -1,0 +1,10 @@
+{
+  "name": "Spotbase",
+  "app_id": "",
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "http://URL/TOEXCHANGEDIR"
+    }
+  ]
+}

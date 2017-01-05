@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    Loading...
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/angular-local-storage/dist/angular-local-storage.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+</head>
+
+<body ng-app="spotbaseApp" ng-controller="mainCtrl" ng-init="init()">
+
+    <ion-pane>
+        <ion-header-bar class="bar-dark">
+            <!-- Update Spots -->
+            <button class="button button-icon" ng-click="updateSpots()">
+                <i class="icon ion-refresh"></i>
+            </button>
+
+            <h1 class="title">Spotbase</h1>
+                        
+            <!-- Enter Sync Key-->
+            <button class="button button-icon" ng-click="openSyncKey()">
+                <i class="icon ion-key"></i>
+            </button>
+        </ion-header-bar>
+        <ion-content>
+            <!-- spotType Filter -->
+            <label class="item item-input item-select">
+                <div class="input-label">
+                  Spot Type
+                </div>
+                <select  ng-model="selectedType.value" ng-change="typeChanged()">
+                    <option ng-repeat="type in types" value="{{type.value}}">{{type.name}}</option>
+                </select>
+            </label>
+
+            <!--List of spots-->
+            <div class="list card" ng-repeat="spot in spots">
+                <div class="item item-divider">
+                    <span ng-bind="spot.name"></span> (<span ng-bind="spot.city"></span>)
+                </div>
+                <div class="item item-body">
+                    <p>
+                        {{spot.description}}
+                    </p>
+                    <img data-ng-src="data:image/jpeg;base64,{{spot.image}}">
+
+                    <button class="button button-icon" ng-click="openExternal($event)" data-external="{{spot.googleLink}}">
+                        <i class="icon ion-navigate"></i>
+                        Show on map                        
+                    </button>
+                </div>
+
+            </div>
+
+        </ion-content>
+    </ion-pane>
+
+    <!--Modal template-->
+    <script id="sync-key-modal.html" type="text/ng-template">
+        <ion-modal-view>
+
+            <ion-header-bar class="bar-dark">
+                <h1 class="title">Enter Sync Key</h1>
+                <button class="button button-icon" ng-click="closeSyncKey()">
+                    <i class="icon ion-android-close"></i>
+                </button>
+            </ion-header-bar>
+
+            <ion-content>
+                <form ng-submit="saveSyncKey()">
+                    <div class="list list-inset">
+
+                        <label class="item item-input">
+                            <input ng-model="syncKey.key" type="text" placeholder="Sync Key">
+                        </label>
+                        
+                        <button type="submit" class="button button-block button-positive">Save</button>
+                    </div>
+                </form>
+            </ion-content>
+
+        </ion-modal-view>
+    </script>
+</body>
+
+</html>
