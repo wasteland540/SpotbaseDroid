@@ -3,7 +3,8 @@ SpotbaseDroid
 
 An Ionic App for fetching spots from Spotbase application. 
 
-###Install dependencies as specified by `package.json` and `bower.json`
+Install dependencies as specified by `package.json` and `bower.json`
+------------
 
 ````
 npm install
@@ -12,13 +13,15 @@ npm install
 bower install
 ````
 
-###Preview the app in the browser
+Preview the app in the browser
+------------
 
 ````
 ionic serve --lab
 ````
 
-###Test on a mobile device
+Test on a mobile device
+------------
 
 ````
 phonegap serve
